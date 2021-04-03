@@ -48,3 +48,13 @@
                    val
                    (map key))]
     modes))
+
+(defn edf
+  "Empirical Distribution Function
+   https://en.wikipedia.org/wiki/Empirical_distribution_function"
+  [n p]
+  (let [j (int (* n p))
+        f (rem (* n p) 1)]
+    (if (zero? f)
+      (/ (+ j (inc j)) 2)
+      (inc j))))
