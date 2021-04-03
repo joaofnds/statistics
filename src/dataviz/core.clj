@@ -42,7 +42,7 @@
      [:td (s/mode coll)]]]])
 
 (defn -main [& args]
-  (let [coll (map #(Float/parseFloat %) *command-line-args*)
+  (let [coll (map #(Float/parseFloat %) args)
         fd (s/frequency-distribution coll)]
     (oz/export!
      [:div
