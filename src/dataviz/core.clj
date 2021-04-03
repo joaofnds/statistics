@@ -16,7 +16,7 @@
                   :type "quantitative"
                   :axis {:labelExpr "datum.label * 100 + '%'"}}}})
 
-(defn asdf [fd]
+(defn fd-table [fd]
   [:table {:border "1"}
    [:thead
     [:tr
@@ -46,7 +46,7 @@
         fd (s/frequency-distribution coll)]
     (oz/export!
      [:div
-      (asdf fd)
+      (fd-table fd)
       (mean-median-mode-table coll)
       [:vega-lite (build-chart fd)]]
      "out.html")))
