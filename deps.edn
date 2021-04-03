@@ -1,8 +1,9 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.10.2"}}
+ :deps {org.clojure/clojure {:mvn/version "1.10.2"}
+        metasoarous/oz {:mvn/version "1.6.0-alpha34"}}
  :aliases
- {:run-m {:main-opts ["-m" "joaofnds.dataviz"]}
-  :run-x {:ns-default joaofnds.dataviz
+ {:run-m {:main-opts ["-m" "dataviz.core"]}
+  :run-x {:ns-default dataviz.core
           :exec-fn greet
           :exec-args {:name "Clojure"}}
   :test {:extra-paths ["test"]
@@ -17,5 +18,5 @@
             :exec-fn hf.depstar/uberjar
             :exec-args {:aot true
                         :jar "dataviz.jar"
-                        :main-class "joaofnds.dataviz"
+                        :main-class "dataviz.core"
                         :sync-pom true}}}}

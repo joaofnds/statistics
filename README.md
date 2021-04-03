@@ -1,14 +1,10 @@
 # dataviz
 
-FIXME: my new application.
-
 ## Installation
 
 Download from https://github.com/joaofnds/dataviz
 
 ## Usage
-
-FIXME: explanation
 
 Run the project directly, via `:exec-fn`:
 
