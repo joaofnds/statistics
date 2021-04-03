@@ -1,19 +1,17 @@
-{:paths ["src" "resources"]
+{:paths ["src"]
+
  :deps {org.clojure/clojure {:mvn/version "1.10.2"}
-        metasoarous/oz {:mvn/version "1.6.0-alpha34"}}
+        metasoarous/oz      {:mvn/version "1.6.0-alpha34"}}
+
  :aliases
- {:run-m {:main-opts ["-m" "dataviz.core"]}
-  :run-x {:ns-default dataviz.core
-          :exec-fn greet
-          :exec-args {:name "Clojure"}}
+ {:run {:main-opts ["-m" "dataviz.core"]}
+
   :test {:extra-paths ["test"]
-         :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}}}
-  :runner
-  {:extra-deps {com.cognitect/test-runner
-                {:git/url "https://github.com/cognitect-labs/test-runner"
-                 :sha "b6b3193fcc42659d7e46ecd1884a228993441182"}}
-   :main-opts ["-m" "cognitect.test-runner"
-               "-d" "test"]}
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
+                      com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                                 :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}
+         :main-opts ["-m" "cognitect.test-runner"]}
+
   :uberjar {:replace-deps {seancorfield/depstar {:mvn/version "2.0.171"}}
             :exec-fn hf.depstar/uberjar
             :exec-args {:aot true
