@@ -8,6 +8,10 @@ Run the project directly to build and frequency distribution table:
 
     $ clj -M:run 3.12 3.18 3.21 3.22 3.22 3.25 3.26 3.28 3.13 3.19 3.21 3.22 3.23 3.25 3.26 3.28 3.14 3.19 3.21
 
+This will produce something like this:
+
+<img src="./output-example.png" />
+
 Build an uberjar:
 
     $ clojure -X:uberjar
