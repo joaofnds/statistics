@@ -4,14 +4,14 @@
   (let [coll (sort coll)
         n (count coll)
         k (int (Math/ceil (Math/sqrt n)))
-        es (apply min coll)
-        ei (apply max coll)
-        i (/ (- ei es) k)
-        classes (map #(+ es (* i %)) (range k))]
+        inferior-limit (apply min coll)
+        superior-limit (apply max coll)
+        i (/ (- superior-limit inferior-limit) k)
+        classes (map #(+ inferior-limit (* i %)) (range k))]
     (map-indexed
      (fn [j _class]
-       (let [min (+ es (* j i))
-             max (+ es (* (inc j) i))
+       (let [min (+ inferior-limit (* j i))
+             max (+ inferior-limit (* (inc j) i))
              max-comp (if (= (inc j) k) <= <)
              numbers (filter #(and (<= min %) (max-comp % max)) coll)
              F (count numbers)
