@@ -4,14 +4,13 @@
             [dataviz.statistics :as s]))
 
 (defn build-chart [data]
-  {:data {:values data}
-   :mark "bar"
-   :encoding {:x {:title "Número de pessoas com diabetes"
-                  :field :j
+  {:mark "bar"
+   :autosize {:type "fit" :contains "padding"}
+   :data {:values data}
+   :encoding {:x {:field :j
                   :type "ordinal"
                   :axis {:labelAngle 0}}
-              :y {:title "Porcentagem de grupos"
-                  :field :F
+              :y {:field :F
                   :type "quantitative"
                   :axis {:labelExpr "datum.label * 100 + '%'"}}}})
 
