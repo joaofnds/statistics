@@ -33,13 +33,13 @@
    [:tbody
     [:tr
      [:th "mean"]
-     [:td (s/mean coll)]]
+     [:td (float (s/mean coll))]]
     [:tr
      [:th "median"]
      [:td (s/median coll)]]
     [:tr
      [:th "mode"]
-     [:td (s/mode coll)]]]])
+     [:td (str/join ", " (s/mode coll))]]]])
 
 (defn -main [& args]
   (let [coll (map #(Float/parseFloat %) args)
