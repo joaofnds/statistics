@@ -58,3 +58,9 @@
     (if (zero? f)
       (/ (+ j (inc j)) 2)
       (inc j))))
+
+(defn quantile-values [coll quartiles]
+  (let [n (count coll)]
+    (->> quartiles
+         (map #(edf n %))
+         (map #(nth coll (dec %))))))
