@@ -56,7 +56,7 @@
   (let [j (int (* n p))
         f (rem (* n p) 1)]
     (if (zero? f)
-      (/ (+ j (inc j)) 2)
+      (int (/ (+ j (inc j)) 2))
       (inc j))))
 
 (defn quantile-values [coll quartiles]
