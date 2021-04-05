@@ -39,15 +39,13 @@
      [:th "mode"]
      [:td (str/join ", " (s/mode coll))]]]])
 
-(defn quartiles-table [coll]
-  (let [quantiles [0.1 0.25 0.5 0.75 0.95]
-        qvs (s/quantile-values coll quantiles)]
-    [:table {:border 1}
-     [:tbody
-      (for [[q qv] (zipmap quantiles qvs)]
-        [:tr
-         [:th (str "Q" q)]
-         [:td qv]])]]))
+(defn quantiles-table [coll points]
+  [:table {:border 1}
+   [:tbody
+    (for [p points]
+      [:tr
+       [:th (str "Q" p)]
+       [:td (s/icdf coll p)]])]])
 
 (defn variance-table [coll]
   [:table {:border 1}
@@ -68,7 +66,7 @@
      [:div
       (fd-table fd)
       (mean-median-mode-table coll)
-      (quartiles-table coll)
+      (quantiles-table coll [0.1 0.25 0.5 0.75 0.95])
       (variance-table coll)
       [:vega-lite (build-chart fd)]]
      "out.html")))

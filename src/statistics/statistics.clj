@@ -49,21 +49,15 @@
                    (map key))]
     modes))
 
-(defn edf
-  "Empirical Distribution Function
-   https://en.wikipedia.org/wiki/Empirical_distribution_function"
-  [n p]
-  (let [j (int (* n p))
-        f (rem (* n p) 1)]
+(defn icdf
+  "Inverse Cumulative Distribution Function"
+  [coll point]
+  (let [n (count coll)
+        j (int (* n point))
+        f (rem (* n point) 1)]
     (if (zero? f)
-      (int (/ (+ j (inc j)) 2))
-      (inc j))))
-
-(defn quantile-values [coll quantiles]
-  (let [n (count coll)]
-    (->> quantiles
-         (map #(edf n %))
-         (map #(nth coll (dec %))))))
+      (int (/ (+ (nth coll j) (nth coll (inc j))) 2))
+      (nth coll (inc j)))))
 
 (defn variance [coll]
   (let [square #(* % %)
