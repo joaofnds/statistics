@@ -54,10 +54,12 @@
   [coll point]
   (let [n (count coll)
         j (int (* n point))
-        f (rem (* n point) 1)]
+        f (rem (* n point) 1)
+        xj (nth coll (dec j)) ;; j-1 due to 0-based index
+        xj+1 (nth coll j)]
     (if (zero? f)
-      (int (/ (+ (nth coll j) (nth coll (inc j))) 2))
-      (nth coll (inc j)))))
+      (/ (+ xj xj+1) 2)
+      xj+1)))
 
 (defn variance [coll]
   (let [square #(* % %)
