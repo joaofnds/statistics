@@ -64,3 +64,16 @@
     (->> quartiles
          (map #(edf n %))
          (map #(nth coll (dec %))))))
+
+(defn variance [coll]
+  (let [square #(* % %)
+        n (count coll)
+        mean (mean coll)
+        square-diffs (map #(square (- % mean)) coll)]
+    (/ (reduce + square-diffs) (dec n))))
+
+(defn variance->std-deviation [v]
+  (Math/sqrt v))
+
+(defn std-deviation [coll]
+  (variance->std-deviation (variance coll)))

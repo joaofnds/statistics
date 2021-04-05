@@ -53,6 +53,18 @@
        [:th "Q.75"]
        [:td q75]]]]))
 
+(defn variance-table [coll]
+  (let [variance (s/variance coll)
+        std-deviation (s/variance->std-deviation variance)]
+    [:table {:border 1}
+     [:tbody
+      [:tr
+       [:th "variance"]
+       [:td variance]]
+      [:tr
+       [:th "standard deviation"]
+       [:td std-deviation]]]]))
+
 (defn create-page [coll]
   (let [fd (s/frequency-distribution coll)]
     (oz/export!
@@ -60,5 +72,6 @@
       (fd-table fd)
       (mean-median-mode-table coll)
       (quartiles-table coll)
+      (variance-table coll)
       [:vega-lite (build-chart fd)]]
      "out.html")))
