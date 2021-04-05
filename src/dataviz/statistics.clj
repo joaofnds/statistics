@@ -59,9 +59,9 @@
       (int (/ (+ j (inc j)) 2))
       (inc j))))
 
-(defn quantile-values [coll quartiles]
+(defn quantile-values [coll quantiles]
   (let [n (count coll)]
-    (->> quartiles
+    (->> quantiles
          (map #(edf n %))
          (map #(nth coll (dec %))))))
 
@@ -72,8 +72,10 @@
         square-diffs (map #(square (- % mean)) coll)]
     (/ (reduce + square-diffs) (dec n))))
 
-(defn variance->std-deviation [v]
-  (Math/sqrt v))
-
 (defn std-deviation [coll]
-  (variance->std-deviation (variance coll)))
+  (Math/sqrt (variance coll)))
+
+(defn coefficient-of-variation [coll]
+  (let [std-deviation (std-deviation coll)
+        mean (mean coll)]
+    (* (/ std-deviation mean) 100)))

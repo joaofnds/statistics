@@ -54,16 +54,17 @@
        [:td q75]]]]))
 
 (defn variance-table [coll]
-  (let [variance (s/variance coll)
-        std-deviation (s/variance->std-deviation variance)]
-    [:table {:border 1}
-     [:tbody
-      [:tr
-       [:th "variance"]
-       [:td variance]]
-      [:tr
-       [:th "standard deviation"]
-       [:td std-deviation]]]]))
+  [:table {:border 1}
+   [:tbody
+    [:tr
+     [:th "variance"]
+     [:td (s/variance coll)]]
+    [:tr
+     [:th "standard deviation"]
+     [:td (s/variance coll)]]
+    [:tr
+     [:th "CV"]
+     [:td (s/coefficient-of-variation coll)]]]])
 
 (defn create-page [coll]
   (let [fd (s/frequency-distribution coll)]
