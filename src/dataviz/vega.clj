@@ -61,7 +61,7 @@
      [:td (s/variance coll)]]
     [:tr
      [:th "standard deviation"]
-     [:td (s/variance coll)]]
+     [:td (s/std-deviation coll)]]
     [:tr
      [:th "CV"]
      [:td (s/coefficient-of-variation coll)]]]])
