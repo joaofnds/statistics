@@ -7,10 +7,16 @@
   (read-line))
 
 (defn prompt-int [message]
-  (Integer/parseInt (str/trim (prompt message))))
+  (try
+    (Integer/parseInt (str/trim (prompt message)))
+    (catch Exception _
+      nil)))
 
 (defn prompt-float [message]
-  (Float/parseFloat (str/trim (prompt message))))
+  (try
+    (Float/parseFloat (str/trim (prompt message)))
+    (catch Exception _
+      nil)))
 
 (defn prompt-coll [message p-fn]
   (loop [coll (vector)]

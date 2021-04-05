@@ -40,18 +40,14 @@
      [:td (str/join ", " (s/mode coll))]]]])
 
 (defn quartiles-table [coll]
-  (let [[q25 q50 q75] (s/quantile-values coll [0.25 0.5 0.75])]
+  (let [quantiles [0.1 0.25 0.5 0.75 0.95]
+        qvs (s/quantile-values coll quantiles)]
     [:table {:border 1}
      [:tbody
-      [:tr
-       [:th "Q.25"]
-       [:td q25]]
-      [:tr
-       [:th "Q.50"]
-       [:td q50]]
-      [:tr
-       [:th "Q.75"]
-       [:td q75]]]]))
+      (for [[q qv] (zipmap quantiles qvs)]
+        [:tr
+         [:th (str "Q" q)]
+         [:td qv]])]]))
 
 (defn variance-table [coll]
   [:table {:border 1}
