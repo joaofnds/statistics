@@ -1,7 +1,7 @@
-(ns dataviz.vega
+(ns statistics.vega
   (:require [clojure.string :as str]
             [oz.core :as oz]
-            [dataviz.statistics :as s]))
+            [statistics.statistics :as s]))
 
 (defn build-chart [data]
   {:mark "bar"

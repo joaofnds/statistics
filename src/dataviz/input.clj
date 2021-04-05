@@ -1,4 +1,4 @@
-(ns dataviz.input
+(ns statistics.input
   (:require [clojure.string :as str]))
 
 (defn prompt [message]

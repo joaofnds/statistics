@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>joaofnds</groupId>
-  <artifactId>dataviz</artifactId>
+  <artifactId>statistics</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>joaofnds/dataviz</name>
+  <name>joaofnds/statistics</name>
   <description>FIXME: my new application.</description>
-  <url>https://github.com/joaofnds/dataviz</url>
+  <url>https://github.com/joaofnds/statistics</url>
   <licenses>
     <license>
       <name>Eclipse Public License</name>
@@ -19,16 +19,26 @@
     </developer>
   </developers>
   <scm>
-    <url>https://github.com/joaofnds/dataviz</url>
-    <connection>scm:git:git://github.com/joaofnds/dataviz.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/joaofnds/dataviz.git</developerConnection>
+    <url>https://github.com/joaofnds/statistics</url>
+    <connection>scm:git:git://github.com/joaofnds/statistics.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/joaofnds/statistics.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <dependencies>
     <dependency>
       <groupId>org.clojure</groupId>
       <artifactId>clojure</artifactId>
-      <version>1.10.1</version>
+      <version>1.10.2</version>
+    </dependency>
+    <dependency>
+      <groupId>metasoarous</groupId>
+      <artifactId>oz</artifactId>
+      <version>1.6.0-alpha34</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>tools.cli</artifactId>
+      <version>1.0.206</version>
     </dependency>
   </dependencies>
   <build>
@@ -38,10 +48,6 @@
     <repository>
       <id>clojars</id>
       <url>https://repo.clojars.org/</url>
-    </repository>
-    <repository>
-      <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
     </repository>
   </repositories>
   <distributionManagement>

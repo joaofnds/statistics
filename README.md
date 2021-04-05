@@ -1,4 +1,4 @@
-# dataviz
+# statistics
 
 Some scripts and functions to ~~automate~~ _learn_ things from my statistics class
 
@@ -27,7 +27,7 @@ also need to remove `:sync-pom true` from the `deps.edn` file (in the `:exec-arg
 
 Run that uberjar:
 
-    $ java -jar dataviz.jar
+    $ java -jar statistics.jar
 
 ## License
 

@@ -1,8 +1,8 @@
-(ns dataviz.core
+(ns statistics.core
   (:require [clojure.pprint :as pprint]
-            [dataviz.statistics :as s]
-            [dataviz.input :as i]
-            [dataviz.vega :as vega])
+            [statistics.statistics :as s]
+            [statistics.input :as i]
+            [statistics.vega :as vega])
   (:gen-class))
 
 (defn -main [& args]

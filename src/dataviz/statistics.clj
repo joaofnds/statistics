@@ -1,4 +1,4 @@
-(ns dataviz.statistics)
+(ns statistics.statistics)
 
 (defn frequency-distribution [coll]
   (let [coll (sort coll)

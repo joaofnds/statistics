@@ -4,7 +4,7 @@
         metasoarous/oz      {:mvn/version "1.6.0-alpha34"}}
 
  :aliases
- {:run {:main-opts ["-m" "dataviz.core"]}
+ {:run {:main-opts ["-m" "statistics.core"]}
 
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
@@ -15,6 +15,6 @@
   :uberjar {:replace-deps {seancorfield/depstar {:mvn/version "2.0.171"}}
             :exec-fn hf.depstar/uberjar
             :exec-args {:aot true
-                        :jar "dataviz.jar"
-                        :main-class "dataviz.core"
+                        :jar "statistics.jar"
+                        :main-class "statistics.core"
                         :sync-pom true}}}}
