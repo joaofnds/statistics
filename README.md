@@ -2,6 +2,8 @@
 
 Some scripts and functions to ~~automate~~ _learn_ things from my statistics class
 
+DISCLAIMER: I'm dumb and this is probably all wrong
+
 ## Usage
 
 Run the project directly to build and frequency distribution table:
