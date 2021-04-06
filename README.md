@@ -6,7 +6,7 @@ Some scripts and functions to ~~automate~~ _learn_ things from my statistics cla
 
 Run the project directly to build and frequency distribution table:
 
-    $ clj -M:run 3.12 3.18 3.21 3.22 3.22 3.25 3.26 3.28 3.13 3.19 3.21 3.22 3.23 3.25 3.26 3.28 3.14 3.19 3.21
+    $ clj -M -m statistics.core 29 39 45 49 52 54 58 61 66 72 31 41 46 50 52 54 59 61 66 73 35 43 47 51 53 55 59 63 67 74 36 43 47 51 53 56 59 63 67 75 37 43 47 51 53 57 60 63 69 77 38 44 48 51 53 57 60 65 71 82
 
 It should produce an `out.html` file containing something like this:
 
