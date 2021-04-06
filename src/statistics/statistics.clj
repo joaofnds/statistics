@@ -66,7 +66,7 @@
         n (count coll)
         mean (mean coll)
         square-diffs (map #(square (- % mean)) coll)]
-    (/ (reduce + square-diffs) (dec n))))
+    (/ (apply + square-diffs) (dec n))))
 
 (defn std-deviation [coll]
   (Math/sqrt (variance coll)))
