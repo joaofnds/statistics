@@ -19,7 +19,7 @@
              f (float (/ F n))
              f-prime (float (/ F-prime n))
              c (float (/ (+ min max) 2))]
-         {:j (inc j) :min min :max max :F f :F-prime F-prime :f f :f-prime f-prime :c c}))
+         {:j (inc j) :min min :max max :F F :F-prime F-prime :f f :f-prime f-prime :c c}))
      classes)))
 
 (defn mean [coll]
