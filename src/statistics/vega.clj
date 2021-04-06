@@ -10,7 +10,7 @@
    :encoding {:x {:field :j
                   :type "ordinal"
                   :axis {:labelAngle 0}}
-              :y {:field :F
+              :y {:field :f
                   :type "quantitative"
                   :axis {:labelExpr "datum.label * 100 + '%'"}}}})
 
