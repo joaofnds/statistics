@@ -75,3 +75,43 @@
   (let [std-deviation (std-deviation coll)
         mean (mean coll)]
     (* (/ std-deviation mean) 100)))
+
+(defn range [coll]
+  (- (apply max coll) (apply min coll)))
+
+(defn square [x]
+  (* x x))
+
+(defn pow [x y]
+  (reduce * (repeat y x)))
+
+(defn sqrt [x]
+  (Math/sqrt x))
+
+(defn moment [coll ord]
+  {:pre [(pos? ord)]}
+  (let [mean (mean coll)]
+    (/ (apply + (map #(pow (- % mean) ord) coll))
+       (count coll))))
+
+(defn a3 [coll]
+  (let [m2 (moment coll 2)
+        m3 (moment coll 3)]
+    (/ m3 (* m2 (sqrt m2)))))
+
+(defn a4 [coll]
+  (let [m2 (moment coll 2)
+        m4 (moment coll 4)]
+    (/ m4 (square m2))))
+
+(defn skewness [coll]
+  (condp apply [(a3 coll)]
+    neg?  "negative"
+    zero? "symmetric"
+    pos?  "positive"))
+
+(defn kurtosis [coll]
+  (condp apply [(- (a4 coll) 3)]
+    neg?  "platykurtic"
+    zero? "mesokurtic"
+    pos?  "leptokurtic"))
