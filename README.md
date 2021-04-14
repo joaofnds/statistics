@@ -8,7 +8,7 @@ DISCLAIMER: I'm dumb and this is probably all wrong
 
 Run the project directly to build a frequency distribution table:
 
-    $ clj -M -m statistics.core 29 39 45 49 52 54 58 61 66 72 31 41 46 50 52 54 59 61 66 73 35 43 47 51 53 55 59 63 67 74 36 43 47 51 53 56 59 63 67 75 37 43 47 51 53 57 60 63 69 77 38 44 48 51 53 57 60 65 71 82
+    $ clj -M -m statistics.core 3.11 8.88 9.26 10.81 12.69 13.78 15.23 15.62 17.00 17.39 18.36 18.43 19.27 19.50 19.54 20.16 20.59 22.22 23.04 24.47 24.58 25.13 26.24 26.26 27.65 28.06 28.08 28.38 32.03 36.37 38.98 38.64 39.16 41.02 42.97 44.08 44.67 45.40 46.69 48.65 50.39 52.75 54.80 59.07 61.22 70.32 82.70 85.76 86.37 93.34
 
 It should produce an `out.html` file containing something like this:
 
