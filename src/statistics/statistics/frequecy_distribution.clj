@@ -2,7 +2,7 @@
   (:require [statistics.math :refer [ceil sqrt log2 minmax]]))
 
 (defn sturges [n]
-  (inc (log2 n)))
+  (int (ceil (inc (log2 n)))))
 
 (defn number-of-classes [n method]
   (case method
