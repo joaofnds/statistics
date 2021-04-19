@@ -1,7 +1,8 @@
 (ns statistics.vega
   (:require [clojure.string :as str]
             [oz.core :as oz]
-            [statistics.statistics :as s]))
+            [statistics.statistics :as s]
+            [statistics.statistics.frequecy-distribution :as fd]))
 
 (defn build-chart [data]
   {:mark "bar"
@@ -55,7 +56,7 @@
       [:td (s/coefficient-of-variation coll)]]
      [:tr
       [:th "range"]
-      [:td (s/range coll)]]
+      [:td (s/coll-range coll)]]
      [:tr
       [:th "m2"]
       [:td (s/moment coll 2)]]
@@ -79,7 +80,7 @@
       [:td (s/kurtosis coll)]]]]))
 
 (defn create-page [coll]
-  (let [fd (s/frequency-distribution coll)]
+  (let [fd (fd/frequency-distribution coll :sqrt)]
     (oz/export!
      [:div
       (fd-table fd)

@@ -1,26 +1,9 @@
-(ns statistics.statistics)
+(ns statistics.statistics
+  (:require [statistics.math :refer [minmax square pow sqrt]]))
 
-(defn frequency-distribution [coll]
-  (let [coll (sort coll)
-        n (count coll)
-        k (int (Math/ceil (Math/sqrt n)))
-        inferior-limit (apply min coll)
-        superior-limit (apply max coll)
-        i (/ (- superior-limit inferior-limit) k)
-        classes (map #(+ inferior-limit (* i %)) (range k))]
-    (map-indexed
-     (fn [j _class]
-       (let [min (+ inferior-limit (* j i))
-             max (+ inferior-limit (* (inc j) i))
-             max-comp (if (= (inc j) k) <= <)
-             numbers (filter #(and (<= min %) (max-comp % max)) coll)
-             F (count numbers)
-             F-prime (count (filter #(max-comp % max) coll))
-             f (float (/ F n))
-             f-prime (float (/ F-prime n))
-             c (float (/ (+ min max) 2))]
-         {:j (inc j) :min min :max max :F F :F-prime F-prime :f f :f-prime f-prime :c c}))
-     classes)))
+(defn coll-range [coll]
+  (let [[li ls] (minmax coll)]
+    (- ls li)))
 
 (defn mean [coll]
   (let [sum (apply + coll)
@@ -61,38 +44,26 @@
       (/ (+ xj xj+1) 2)
       xj+1)))
 
+(defn deviance [coll]
+  (let [mean (mean coll)]
+    (map #(- % mean) coll)))
+
 (defn variance [coll]
-  (let [square #(* % %)
-        n (count coll)
-        mean (mean coll)
-        square-diffs (map #(square (- % mean)) coll)]
-    (/ (apply + square-diffs) (dec n))))
+  (/ (apply + (map square (deviance coll)))
+     (dec (count coll))))
 
 (defn std-deviation [coll]
-  (Math/sqrt (variance coll)))
+  (sqrt (variance coll)))
 
 (defn coefficient-of-variation [coll]
   (let [std-deviation (std-deviation coll)
         mean (mean coll)]
     (* (/ std-deviation mean) 100)))
 
-(defn range [coll]
-  (- (apply max coll) (apply min coll)))
-
-(defn square [x]
-  (* x x))
-
-(defn pow [x y]
-  (reduce * (repeat y x)))
-
-(defn sqrt [x]
-  (Math/sqrt x))
-
 (defn moment [coll ord]
   {:pre [(pos? ord)]}
-  (let [mean (mean coll)]
-    (/ (apply + (map #(pow (- % mean) ord) coll))
-       (count coll))))
+  (/ (apply + (map #(pow % ord) (deviance coll)))
+     (count coll)))
 
 (defn a3 [coll]
   (let [m2 (moment coll 2)
