@@ -43,8 +43,14 @@
       [:td (str/join ", " (s/mode coll))]]
      (for [p points]
        [:tr
-        [:th (str "Q" p)]
+        [:th (str "q" p)]
         [:td (s/icdf coll p)]])
+     [:tr
+      [:th "IQR"]
+      [:td (s/interquartile-range coll)]]
+     [:tr
+      [:th "Dispersion"]
+      [:td (str/join ", " (s/dispersion coll))]]
      [:tr
       [:th "Tukey's fences (K=1.5)"]
       [:td (str/join ", " (s/fences coll 1.5))]]

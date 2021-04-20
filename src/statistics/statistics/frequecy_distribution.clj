@@ -14,7 +14,7 @@
         n (count coll)                      ;; collection size
         k (number-of-classes n bins-method) ;; number of classes
         [li ls] (minmax coll)               ;; limit inferior, limit superior
-        iqr (/ (- ls li) k)]                ;; interquartile range
+        iqr (/ (- ls li) k)]                ;; interquantile range
     (map
      (fn [j]
        (let [min (+ li (* j iqr))

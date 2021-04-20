@@ -87,11 +87,25 @@
     zero? "mesokurtic"
     pos?  "leptokurtic"))
 
+(defn quartiles [coll]
+  [(icdf coll 0.25)
+   (icdf coll 0.50)
+   (icdf coll 0.75)])
+
+(defn interquartile-range [coll]
+  (let [[Q1 _ Q3] (quartiles coll)]
+    (- Q3 Q1)))
+
+(defn dispersion [coll]
+  (let [[li ls] (minmax coll)
+        md (median coll)]
+    [(- md li)
+     (- ls md)]))
+
 (defn fences
   ([coll] (fences coll 1.5))
   ([coll K]
-   (let [Q1 (icdf coll 0.25)
-         Q3 (icdf coll 0.75)
+   (let [[Q1 _ Q3] (quartiles coll)
          IQR (- Q3 Q1)]
      [(- Q1 (* K IQR))
       (+ Q3 (* K IQR))])))
