@@ -58,6 +58,12 @@
       [:th "Tukey's fences (K=3)"]
       [:td (str/join ", " (s/fences coll 3))]]
      [:tr
+      [:th "outliers (K=1.5)"]
+      [:td (str/join ", " (s/outliers coll 1.5))]]
+     [:tr
+      [:th "outliers (K=3)"]
+      [:td (str/join ", " (s/outliers coll 3))]]
+     [:tr
       [:th "variance"]
       [:td (s/variance coll)]]
      [:tr

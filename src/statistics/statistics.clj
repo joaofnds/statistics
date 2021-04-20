@@ -102,10 +102,15 @@
     [(- md li)
      (- ls md)]))
 
-(defn fences
-  ([coll] (fences coll 1.5))
-  ([coll K]
-   (let [[Q1 _ Q3] (quartiles coll)
-         IQR (- Q3 Q1)]
-     [(- Q1 (* K IQR))
-      (+ Q3 (* K IQR))])))
+(defn fences [coll K]
+  (let [[Q1 _ Q3] (quartiles coll)
+        IQR (- Q3 Q1)]
+    [(- Q1 (* K IQR))
+     (+ Q3 (* K IQR))]))
+
+(defn outliers [coll K]
+  (let [[fi fs] (fences coll K)]
+    (filter
+     #(or (< % fi)
+          (> % fs))
+     coll)))
