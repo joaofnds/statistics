@@ -46,6 +46,12 @@
         [:th (str "Q" p)]
         [:td (s/icdf coll p)]])
      [:tr
+      [:th "Tukey's fences (K=1.5)"]
+      [:td (str/join ", " (s/fences coll 1.5))]]
+     [:tr
+      [:th "Tukey's fences (K=3)"]
+      [:td (str/join ", " (s/fences coll 3))]]
+     [:tr
       [:th "variance"]
       [:td (s/variance coll)]]
      [:tr

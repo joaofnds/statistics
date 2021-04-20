@@ -86,3 +86,12 @@
     neg?  "platykurtic"
     zero? "mesokurtic"
     pos?  "leptokurtic"))
+
+(defn fences
+  ([coll] (fences coll 1.5))
+  ([coll K]
+   (let [Q1 (icdf coll 0.25)
+         Q3 (icdf coll 0.75)
+         IQR (- Q3 Q1)]
+     [(- Q1 (* K IQR))
+      (+ Q3 (* K IQR))])))
