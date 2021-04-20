@@ -6,11 +6,10 @@
     (- ls li)))
 
 (defn mean [coll]
-  (let [sum (apply + coll)
-        count (count coll)]
-    (if (pos? count)
-      (/ sum count)
-      0)))
+  (if (empty? coll)
+    0
+    (/ (apply + coll)
+       (count coll))))
 
 (defn median [coll]
   (let [sorted (sort coll)
