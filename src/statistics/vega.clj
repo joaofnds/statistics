@@ -2,7 +2,7 @@
   (:require [clojure.string :as str]
             [oz.core :as oz]
             [statistics.statistics :as s]
-            [statistics.statistics.frequecy-distribution :as fd]))
+            [statistics.frequency-distribution :as fd]))
 
 (defn build-chart [data]
   {:mark "bar"
@@ -98,7 +98,7 @@
       [:td (s/kurtosis coll)]]]]))
 
 (defn create-page [coll]
-  (let [fd (fd/frequency-distribution coll :sqrt)]
+  (let [fd (fd/frequency-distribution coll :sturges)]
     (oz/export!
      [:div
       (fd-table fd)

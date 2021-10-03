@@ -1,4 +1,4 @@
-(ns statistics.statistics.frequecy-distribution
+(ns statistics.frequency-distribution
   (:require [statistics.math :refer [ceil sqrt log2 minmax]]))
 
 (defn sturges [n]
